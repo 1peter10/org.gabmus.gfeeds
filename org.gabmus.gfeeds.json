@@ -2,7 +2,7 @@
     "app-id": "org.gabmus.gfeeds",
     "command": "gfeeds",
     "runtime": "org.gnome.Platform",
-    "runtime-version": "46",
+    "runtime-version": "49",
     "sdk": "org.gnome.Sdk",
     "finish-args": [
         "--device=dri",
@@ -18,7 +18,6 @@
         "/lib/python3.10/site-packages/pytest*",
         "/bin/pytest",
         "/bin/py.test"
-
     ],
     "modules": [
         "python-deps.json",
@@ -32,36 +31,8 @@
             "sources": [
                 {
                     "type": "archive",
-                    "url": "https://github.com/lxml/lxml/releases/download/lxml-4.9.2/lxml-4.9.2.tar.gz",
-                    "sha256": "d3fe33ffef3637e053cce7aa0bf26ad0943911c808e27962ba1202198e21a212"
-                }
-            ]
-        },
-        {
-            "name": "blueprint-compiler",
-            "buildsystem": "meson",
-            "cleanup": [
-                "*"
-            ],
-            "sources": [
-                {
-                    "type": "archive",
-                    "url": "https://gitlab.gnome.org/jwestman/blueprint-compiler/-/archive/v0.6.0/blueprint-compiler-v0.6.0.tar.gz",
-                    "sha256": "c9e3652b66803c1de6a24b71f4fa4638b32260b4b04b93c2f3d958e1ce2a175e"
-                }
-            ]
-        },
-        {
-            "name": "python-pygments",
-            "buildsystem": "simple",
-            "build-commands": [
-                "python3 setup.py install --prefix=/app --root=/"
-            ],
-            "sources": [
-                {
-                    "type": "archive",
-                    "url": "https://github.com/pygments/pygments/archive/refs/tags/2.14.0.tar.gz",
-                    "sha256": "7cb39366ee4418e8d0fbe16cba940c1a7bb01361c9ac81abaedc90e05806d469"
+                    "url": "https://github.com/lxml/lxml/releases/download/lxml-6.0.2/lxml-6.0.2.tar.gz",
+                    "sha256": "cd79f3367bd74b317dda655dc8fcfa304d9eb6e4fb06b7168c5cf27f96e0cd62"
                 }
             ]
         },
@@ -77,7 +48,7 @@
                 {
                     "type": "git",
                     "url": "https://gitlab.com/gabmus/syndication-domination",
-                    "commit": "75920321062d682437f3fb0319dad227d8b18f6c"
+                    "commit": "95ba487eb887e31e50d1af377fb69824c96eeb5e"
                 }
             ],
             "modules": [
@@ -87,8 +58,8 @@
                     "sources": [
                         {
                             "type": "archive",
-                            "url": "https://downloads.sourceforge.net/boost/boost/1.80.0/boost_1_80_0.tar.bz2",
-                            "sha256": "1e19565d82e43bc59209a168f5ac899d3ba471d55c7610c677d4ccf2c9c500c0"
+                            "url": "https://downloads.sourceforge.net/boost/boost/1.90.0/boost_1_90_0.tar.bz2",
+                            "sha256": "49551aff3b22cbc5c5a9ed3dbc92f0e23ea50a0f7325b0d198b705e8ee3fc305"
                         }
                     ],
                     "build-commands": [
@@ -100,29 +71,12 @@
                 {
                     "name": "pybind11",
                     "buildsystem": "cmake",
-                    "config-opts": [
-                        "-DBUILD_TESTING=false"
-                    ],
+                    "config-opts": ["-DBUILD_TESTING=false"],
                     "sources": [
                         {
                             "type": "archive",
-                            "url": "https://github.com/pybind/pybind11/archive/refs/tags/v2.10.3.tar.gz",
-                            "sha256": "5d8c4c5dda428d3a944ba3d2a5212cb988c2fae4670d58075a5a49075a6ca315"
-                        }
-                    ]
-                },
-                {
-                    "name": "python-pybind11",
-                    "buildsystem": "simple",
-                    "build-commands": [
-                        "python3 setup.py build",
-                        "python3 setup.py install --prefix=/app --root=/"
-                    ],
-                    "sources": [
-                        {
-                            "type": "archive",
-                            "url": "https://github.com/pybind/pybind11/archive/refs/tags/v2.10.3.tar.gz",
-                            "sha256": "5d8c4c5dda428d3a944ba3d2a5212cb988c2fae4670d58075a5a49075a6ca315"
+                            "url": "https://github.com/pybind/pybind11/archive/refs/tags/v3.0.1.tar.gz",
+                            "sha256": "741633da746b7c738bb71f1854f957b9da660bcd2dce68d71949037f0969d0ca"
                         }
                     ]
                 },
@@ -133,32 +87,31 @@
                         {
                             "type": "git",
                             "url": "https://github.com/zeux/pugixml",
-                            "tag": "v1.13"
+                            "tag": "v1.15"
                         }
                     ]
                 },
                 {
                     "name": "tidy",
                     "buildsystem": "cmake",
+                    "config-opts": ["-DCMAKE_POLICY_VERSION_MINIMUM=3.5"],
                     "sources": [
                         {
                             "type": "git",
                             "url": "https://github.com/htacg/tidy-html5",
-                            "tag": "5.8.0"
+                            "tag": "5.9.14-next"
                         }
                     ]
                 },
                 {
                     "name": "fmt",
                     "buildsystem": "cmake",
-                    "config-opts": [
-                        "-DCMAKE_POSITION_INDEPENDENT_CODE=ON"
-                    ],
+                    "config-opts": ["-DCMAKE_POSITION_INDEPENDENT_CODE=ON"],
                     "sources": [
                         {
                             "type": "archive",
-                            "url": "https://github.com/fmtlib/fmt/archive/refs/tags/9.1.0.tar.gz",
-                            "sha256": "5dea48d1fcddc3ec571ce2058e13910a0d4a6bab4cc09a809d8b1dd1c88ae6f2"
+                            "url": "https://github.com/fmtlib/fmt/archive/refs/tags/12.1.0.tar.gz",
+                            "sha256": "ea7de4299689e12b6dddd392f9896f08fb0777ac7168897a244a6d6085043fea"
                         }
                     ]
                 }
@@ -167,9 +120,7 @@
         {
             "name": "gfeeds",
             "buildsystem": "meson",
-            "config-opts": [
-                "--buildtype=release"
-            ],
+            "config-opts": ["--buildtype=release"],
             "sources": [
                 {
                     "type": "archive",
@@ -179,7 +130,11 @@
                 {
                     "type": "patch",
                     "path": "fix-appdata.patch"
-                }
+                },
+                {
+                    "type": "patch",
+                    "path": "blueprint-0.8.patch"
+                }  
             ]
         }
     ]
